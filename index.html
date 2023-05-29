@@ -63,9 +63,10 @@
             <input class="large-input" v-model="message">
         </div>-->
         <div>
-            <textarea v-model="message" @input="autoGrow"></textarea>
+            <textarea @input="autoGrow"></textarea>
         </div>
         <button class="my-button" v-on:click="changeMessage">Trimite</button>
+        <p>{{message}}</p>
         <p class="spacing"></p>
         <h4>Exemple:</h4>
         <p>Tren de la Bucuresti la Brasov, maine in jurul orei 12:00</p>
@@ -82,7 +83,7 @@
         },
         methods: {
             changeMessage: function() {
-                this.message = 'Hello, Vue.js!';
+                this.message = 'Primul tren de la Bucuresti la Brasov este maine la ora 12:10, Personal 5510';
             },
             autoGrow(event) {
                 event.target.style.height = 'auto';
