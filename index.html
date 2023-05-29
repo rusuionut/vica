@@ -63,32 +63,47 @@
             <input class="large-input" v-model="message">
         </div>-->
         <div>
-            <textarea @input="autoGrow"></textarea>
+            <textarea ref="textarea" @input="autoGrow" v-model="search"></textarea>
         </div>
         <button class="my-button" v-on:click="changeMessage">Trimite</button>
         <p>{{message}}</p>
         <p class="spacing"></p>
         <h4>Exemple:</h4>
-        <p>Tren de la Bucuresti la Brasov, maine in jurul orei 12:00</p>
-        <p>Cum se completeaza declaratia unica ?</p>
-        <p>Care este termenul de depunere a declaratiei unice ?</p>
-        <p>Cate puncte de penalizare primesc daca trec pe rosu la semafor ?</p>
-        <p>Cum pot sa platesc o amenda de circulatie ?</p>
+        <button style="margin: 3px" @click="setText('Tren de la Bucuresti la Brasov, maine in jurul orei 12:00')">Tren de la Bucuresti la Brasov, maine in jurul orei 12:00</button>
+        <br>
+        <button style="margin: 3px"  @click="setText('Cum se completeaza declaratia unica ?')">Cum se completeaza declaratia unica ?</button>
+        <br>
+        <button style="margin: 3px" @click="setText('Care este termenul de depunere a declaratiei unice ?')">Care este termenul de depunere a declaratiei unice ?</button>
+        <br>
+        <button style="margin: 3px" @click="setText('Cate puncte de penalizare primesc daca trec pe rosu la semafor ?')">Cate puncte de penalizare primesc daca trec pe rosu la semafor ?</button>
+        <br>
+        <button style="margin: 3px" @click="setText('Cum pot sa platesc o amenda de circulatie ?')">Cum pot sa platesc o amenda de circulatie ?</button>
+        <br>
     </div>
 </div>
 <script>
     new Vue({
         el: '#app',
         data: {
-            message: ''
+            message: '',
+            search: ''
         },
         methods: {
             changeMessage: function() {
                 this.message = 'Primul tren de la Bucuresti la Brasov este maine la ora 12:10, Personal 5510';
             },
-            autoGrow(event) {
-                event.target.style.height = 'auto';
-                event.target.style.height = (event.target.scrollHeight) + 'px';
+            setText(buttonText) {
+                this.search = buttonText;
+                this.$nextTick(() => {
+                    this.autoGrow();
+                });
+            },
+            autoGrow() {
+                this.$refs.textarea.style.height = 'auto';
+                this.$refs.textarea.style.height = (this.$refs.textarea.scrollHeight) + 'px';
+            },
+            mounted() {
+                this.autoGrow();
             }
         }
     })
