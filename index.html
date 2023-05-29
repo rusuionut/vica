@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>webapp1</title>
+    <script src="https://unpkg.com/vue@2.7.14"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <style scoped>
+      body {
+        font-family: 'Lato', sans-serif;
+      }
+      .my-button {
+        background-color: #D3AC2B;
+        color: white;
+        padding: 15px 10px;
+        border-radius: 5px;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+      }
+      .large-input {
+        width: 300px; /* Or any width you prefer */
+        height: 40px; /* Or any height you prefer */
+        font-size: 20px; /* Or any font size you prefer */
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+      .spacing {
+        height: 20px; /* or whatever height you want for the empty space */
+      }
+      textarea {
+        width: 300px; /* Or any width you prefer */
+        height: 40px; /* Or any height you prefer */
+        font-size: 20px; /* Or any font size you prefer */
+        padding-top: 0px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        overflow: auto;
+        resize: none;
+        min-height: 30px;
+        font-family: 'Lato', sans-serif;
+      }
+      .center-panel {
+        margin: auto;
+        width: 50%;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        text-align: center;
+      }
+    </style>
+    
+</head>
+<body>
+<div class="center-panel">
+    <!-- Your application goes here -->
+
+    <h1>Vica</h1>
+    <div id="app">
+        <p>Cu Vica, găsești răspunsuri cat ai clipi !</p>
+    <!--    <div>
+            <input class="large-input" v-model="message">
+        </div>-->
+        <div>
+            <textarea v-model="message" @input="autoGrow"></textarea>
+        </div>
+        <button class="my-button" v-on:click="changeMessage">Caută</button>
+        <p class="spacing"></p>
+        <h4>Exemple:</h4>
+        <p>Tren de la Bucuresti la Brasov, maine in jurul orei 12:00</p>
+        <p>Termenul de depunere a declaratiei unice</p>
+        <p>Cate puncte de penalizare primesc daca trec pe rosu la semafor ?</p>
+    </div>
+</div>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            message: ''
+        },
+        methods: {
+            changeMessage: function() {
+                this.message = 'Hello, Vue.js!';
+            },
+            autoGrow(event) {
+                event.target.style.height = 'auto';
+                event.target.style.height = (event.target.scrollHeight) + 'px';
+            }
+        }
+    })
+</script>
+
+</body>
+</html>
