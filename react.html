@@ -5,6 +5,20 @@
     <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <style>
+      body {
+        font-family: 'Lato', sans-serif;
+      }
+      .my-button {
+        background-color: #D3AC2B;
+        color: white;
+        padding: 15px 10px;
+        border-radius: 5px;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+      }
+    </style>
 </head>
 <body>
 <div id="root"></div>
@@ -34,7 +48,8 @@
                 'div',
                 null,
                 React.createElement('textarea', { value: this.state.searchText, onChange: this.handleChange }),
-                React.createElement('button', { onClick: this.handleSearchClick, id: 'search-button' }, 'Search'),
+                React.createElement('br', null),
+                React.createElement('button', { onClick: this.handleSearchClick, id: 'search-button', class: 'my-button' }, 'Search'),
                 React.createElement('p', null, this.state.displayedText),
                 buttonValues.map((value, index) =>
                     React.createElement('button', { key: index, onClick: () => this.handleButtonClick(value) }, value)
